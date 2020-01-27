@@ -1,0 +1,192 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search">
+      </div> 
+    </div>
+  </div>
+  
+<div class="col-md-12 mt-4">
+    <h1>Car details</h1>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Fuel_Type</th>
+                <th>PowerSteering</th>
+                <th>Break_System</th>
+                <th>Showroom_price</th>
+                <th>Onroad_price</th>
+                <th>Img_url</th>
+                <th>Mileage</th>
+                <th>Seating_capacity</th>
+                <th>Engine_capacity</th>
+                <th>Gear_Type</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let cars of carDetails | filter:searchText'>
+                <td>{{cars.name}}</td>
+                <td>{{cars.company}}</td>
+                <td>{{cars.fuelType}}</td>
+                <td>{{cars.powerSteer}}</td>
+                <td>{{cars.breakSystem}}</td>
+                <td>{{cars.showroomPrice}}</td>
+                <td>{{cars.onroadPrice}}</td>
+                <td>{{cars.imgurl}}</td>
+                <td>{{cars.mileage}}</td>
+                <td>{{cars.seatingCapacity}}</td>
+                <td>{{cars.engineCapacity}}</td>
+                <td>{{cars.gearType}}</td>
+                <td><button type="button" class="btn-outline-warning" (click)='sendCarDetails(cars)' data-toggle="modal"
+                        data-target=".bd-example-modal-lg">Edit</button></td>
+                <td><button type="button" class="btn-outline-danger"
+                        (click)='deleteCarDetails(cars._id)'>Delete</button></td>
+            </tr>
+        </tbody>
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Car Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      
+                            <form action="" #form='ngForm' (ngSubmit)='updateCarDetails(form.value)'>
+                                <input type="hidden" name="id" #id='ngModel' [(ngModel)]='cars._id'>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" name="name" id="" #name='ngModel' placeholder="Car name" class="form-control"
+                                                ngModel [(ngModel)]='cars.name' required>
+                                                <div *ngIf='name.touched && name.invalid'>
+                                                    <p class="text-danger" *ngIf='name.errors.required'>Name is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" name="company" id="" #company='ngModel' placeholder="Car company name"
+                                                class="form-control" ngModel [(ngModel)]='cars.company' required>
+                                                <div *ngIf='company.touched && company.invalid'>
+                                                    <p class="text-danger" *ngIf='company.errors.required'>Company name is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" name="fuelType" id="" #fuelType='ngModel' placeholder="Fuel Type"
+                                                class="form-control" ngModel  [(ngModel)]='cars.fuelType' required>
+                                                <div *ngIf='fuelType.touched && fuelType.invalid'>
+                                                    <p class="text-danger" *ngIf='fuelType.errors.required'>Fuel type is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" name="powerSteer" id="" #powerSteer='ngModel' placeholder="Power Steering"
+                                                class="form-control" ngModel [(ngModel)]='cars.powerSteer' required>
+                                                <div *ngIf='powerSteer.touched && powerSteer.invalid'>
+                                                    <p class="text-danger" *ngIf='powerSteer.errors.required'>Power steer is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" name="breakSystem" id="" #breakSystem='ngModel' placeholder="Break System"
+                                                class="form-control" ngModel [(ngModel)]='cars.breakSystem' required>
+                                                <div *ngIf='breakSystem.touched && breakSystem.invalid'>
+                                                    <p class="text-danger" *ngIf='breakSystem.errors.required'>Break System is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="number" name="showroomPrice" id="" #showroomPrice='ngModel'
+                                                placeholder="Show Room Price" class="form-control" ngModel [(ngModel)]='cars.showroomPrice'  required>
+                                                <div *ngIf='showroomPrice.touched && showroomPrice.invalid'>
+                                                    <p class="text-danger" *ngIf='showroomPrice.errors.required'>Showroom price is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="number" name="onroadPrice" id="" #onroadPrice='ngModel' placeholder="On Road Price"
+                                                class="form-control" ngModel [(ngModel)]='cars.onroadPrice' required>
+                                                <div *ngIf='onroadPrice.touched && onroadPrice.invalid'>
+                                                    <p class="text-danger" *ngIf='onroadPrice.errors.required'>On road price is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" name="imgurl" id="" #imgurl='ngModel' placeholder="Image Url"
+                                                class="form-control" ngModel [(ngModel)]='cars.imgurl' required>
+                                                <div *ngIf='imgurl.touched && imgurl.invalid'>
+                                                    <p class="text-danger" *ngIf='imgurl.errors.required'>Image url is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="number" name="mileage" id="" #mileage='ngModel' placeholder="Mileage"
+                                                class="form-control" ngModel [(ngModel)]='cars.mileage' required>
+                                                <div *ngIf='mileage.touched && mileage.invalid'>
+                                                    <p class="text-danger" *ngIf='mileage.errors.required'>Mileage is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="number" name="seatingCapacity" id="" #seatingCapacity='ngModel'
+                                                placeholder="Seating Capacity" class="form-control" ngModel [(ngModel)]='cars.seatingCapacity' required>
+                                                <div *ngIf='seatingCapacity.touched && seatingCapacity.invalid'>
+                                                    <p class="text-danger" *ngIf='seatingCapacity.errors.required'>Seating Capacity is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="number" name="engineCapacity" id="" #engineCapacity='ngModel'
+                                                placeholder="Engine Capacity" class="form-control" ngModel [(ngModel)]='cars.engineCapacity' required>
+                                                <div *ngIf='engineCapacity.touched && engineCapacity.invalid'>
+                                                    <p class="text-danger" *ngIf='engineCapacity.errors.required'>Engine Capacity is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" name="gearType" id="" #gearType='ngModel' placeholder="Gear Type"
+                                                class="form-control" ngModel [(ngModel)]='cars.gearType' required>
+                                                <div *ngIf='gearType.touched && gearType.invalid'>
+                                                    <p class="text-danger" *ngIf='gearType.errors.required'>Gear type is required</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary float-right">Update details</button>
+                            </form>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </table>
+</div>

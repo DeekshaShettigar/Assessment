@@ -1,0 +1,126 @@
+<div class="col-md-6 offset-md-3 mt-4 card card-body">
+    <h3 class="text-center text-white bg-dark">Add Car Details</h3>
+    <form action="" #form='ngForm' (ngSubmit)='postCarDetails(form.value)'>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" name="name" id="" #name='ngModel' placeholder="Car name" class="form-control"
+                        ngModel required>
+                        <div *ngIf='name.touched && name.invalid'>
+                            <p class="text-danger" *ngIf='name.errors.required'>Name is required</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" name="company" id="" #company='ngModel' placeholder="Car company name"
+                        class="form-control" ngModel required>
+                        <div *ngIf='company.touched && company.invalid'>
+                            <p class="text-danger" *ngIf='company.errors.required'>Company name is required</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" name="fuelType" id="" #fuelType='ngModel' placeholder="Fuel Type"
+                        class="form-control" ngModel required>
+                        <div *ngIf='fuelType.touched && fuelType.invalid'>
+                            <p class="text-danger" *ngIf='fuelType.errors.required'>Fuel type is required</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" name="powerSteer" id="" #powerSteer='ngModel' placeholder="Power Steering"
+                        class="form-control" ngModel required>
+                        <div *ngIf='powerSteer.touched && powerSteer.invalid'>
+                            <p class="text-danger" *ngIf='powerSteer.errors.required'>Power steer is required</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" name="breakSystem" id="" #breakSystem='ngModel' placeholder="Break System"
+                        class="form-control" ngModel required>
+                        <div *ngIf='breakSystem.touched && breakSystem.invalid'>
+                            <p class="text-danger" *ngIf='breakSystem.errors.required'>Break System is required</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <input type="number" name="showroomPrice" id="" #showroomPrice='ngModel'
+                        placeholder="Show Room Price" class="form-control" ngModel required>
+                        <div *ngIf='showroomPrice.touched && showroomPrice.invalid'>
+                            <p class="text-danger" *ngIf='showroomPrice.errors.required'>Showroom price is required</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <input type="number" name="onroadPrice" id="" #onroadPrice='ngModel' placeholder="On Road Price"
+                        class="form-control" ngModel required>
+                        <div *ngIf='onroadPrice.touched && onroadPrice.invalid'>
+                            <p class="text-danger" *ngIf='onroadPrice.errors.required'>On road price is required</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" name="imgurl" id="" #imgurl='ngModel' placeholder="Image Url"
+                        class="form-control" ngModel required>
+                        <div *ngIf='imgurl.touched && imgurl.invalid'>
+                            <p class="text-danger" *ngIf='imgurl.errors.required'>Image url is required</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <input type="number" name="mileage" id="" #mileage='ngModel' placeholder="Mileage"
+                        class="form-control" ngModel required>
+                        <div *ngIf='mileage.touched && mileage.invalid'>
+                            <p class="text-danger" *ngIf='mileage.errors.required'>Mileage is required</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <input type="number" name="seatingCapacity" id="" #seatingCapacity='ngModel'
+                        placeholder="Seating Capacity" class="form-control" ngModel required>
+                        <div *ngIf='seatingCapacity.touched && seatingCapacity.invalid'>
+                            <p class="text-danger" *ngIf='seatingCapacity.errors.required'>Seating Capacity is required</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <input type="number" name="engineCapacity" id="" #engineCapacity='ngModel'
+                        placeholder="Engine Capacity" class="form-control" ngModel required>
+                        <div *ngIf='engineCapacity.touched && engineCapacity.invalid'>
+                            <p class="text-danger" *ngIf='engineCapacity.errors.required'>Engine Capacity is required</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" name="gearType" id="" #gearType='ngModel' placeholder="Gear Type"
+                        class="form-control" ngModel required>
+                        <div *ngIf='gearType.touched && gearType.invalid'>
+                            <p class="text-danger" *ngIf='gearType.errors.required'>Gear type is required</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right" [disabled]='form.invalid'>Add details</button>
+    </form>
+</div>
